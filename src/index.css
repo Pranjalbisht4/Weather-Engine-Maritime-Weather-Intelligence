@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Maritime Weather Intelligence Design System - Ocean Theme
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Ocean-inspired color palette */
+    --background: 200 30% 96%;
+    --foreground: 220 50% 15%;
+
+    /* Glassmorphism card colors */
+    --card: 200 40% 98%;
+    --card-foreground: 220 40% 20%;
+    --glass: 200 50% 95%;
+    --glass-border: 200 30% 85%;
+
+    --popover: 200 40% 98%;
+    --popover-foreground: 220 40% 20%;
+
+    /* Ocean blue primary (#1E90FF equivalent) */
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 100% 70%;
+
+    /* Teal secondary (#20B2AA equivalent) */
+    --secondary: 177 70% 41%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 177 70% 55%;
+
+    /* Ocean depths and foam */
+    --muted: 200 30% 92%;
+    --muted-foreground: 220 30% 45%;
+
+    --accent: 177 60% 85%;
+    --accent-foreground: 220 50% 15%;
+
+    /* Alert colors for weather warnings */
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 35 95% 55%;
+    --warning-foreground: 0 0% 100%;
+    --success: 145 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 200 25% 85%;
+    --input: 200 30% 94%;
+    --ring: 210 100% 56%;
+
+    /* Ocean-inspired gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 100% 56%), hsl(177 70% 41%));
+    --gradient-depth: linear-gradient(180deg, hsl(200 30% 96%), hsl(210 40% 85%));
+    --gradient-wave: linear-gradient(45deg, hsl(210 100% 70%), hsl(177 70% 55%));
+    
+    /* Glassmorphism effects */
+    --glass-bg: hsla(200, 50%, 95%, 0.8);
+    --glass-border: hsla(200, 30%, 85%, 0.3);
+    --glass-shadow: 0 8px 32px hsla(210, 100%, 56%, 0.1);
+    
+    /* Animation curves - wave-like */
+    --wave-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ripple-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark ocean depths theme */
+    --background: 220 40% 8%;
+    --foreground: 200 30% 95%;
+
+    --card: 220 35% 12%;
+    --card-foreground: 200 30% 95%;
+    --glass: 220 40% 15%;
+    --glass-border: 200 20% 25%;
+
+    --popover: 220 35% 12%;
+    --popover-foreground: 200 30% 95%;
+
+    --primary: 210 100% 65%;
+    --primary-foreground: 220 40% 8%;
+    --primary-glow: 210 100% 75%;
+
+    --secondary: 177 70% 50%;
+    --secondary-foreground: 220 40% 8%;
+    --secondary-glow: 177 70% 65%;
+
+    --muted: 220 30% 18%;
+    --muted-foreground: 200 20% 65%;
+
+    --accent: 177 50% 25%;
+    --accent-foreground: 200 30% 95%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 35 90% 60%;
+    --warning-foreground: 0 0% 100%;
+    --success: 145 65% 50%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 25% 25%;
+    --input: 220 30% 20%;
+    --ring: 210 100% 65%;
+
+    /* Dark ocean gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 100% 65%), hsl(177 70% 50%));
+    --gradient-depth: linear-gradient(180deg, hsl(220 40% 8%), hsl(220 35% 15%));
+    --gradient-wave: linear-gradient(45deg, hsl(210 100% 75%), hsl(177 70% 65%));
+    
+    /* Dark glassmorphism */
+    --glass-bg: hsla(220, 40%, 15%, 0.8);
+    --glass-border: hsla(200, 20%, 25%, 0.3);
+    --glass-shadow: 0 8px 32px hsla(210, 100%, 65%, 0.15);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Maritime animations and effects */
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-2xl shadow-[var(--glass-shadow)];
+  }
+  
+  .wave-animation {
+    background: linear-gradient(-45deg, hsl(210 100% 56%), hsl(177 70% 41%), hsl(210 80% 65%), hsl(177 60% 50%));
+    background-size: 400% 400%;
+    animation: wave-flow 8s ease-in-out infinite;
+  }
+  
+  .ripple-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .ripple-effect::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-radial from-white/20 to-transparent opacity-0 scale-0 rounded-full transition-all duration-500;
+  }
+  
+  .ripple-effect:hover::before {
+    @apply opacity-100 scale-150;
+  }
+  
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .bubble-animation {
+    animation: bubble-rise 4s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .ocean-gradient {
+    background: var(--gradient-ocean);
+  }
+  
+  .depth-gradient {
+    background: var(--gradient-depth);
+  }
+  
+  .wave-gradient {
+    background: var(--gradient-wave);
+  }
+}
+
+/* Keyframe animations */
+@keyframes wave-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 25%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 0% 75%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes ship-sail {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+  }
+}
